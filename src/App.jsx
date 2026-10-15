@@ -1,122 +1,113 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import Header from "./header";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
+    <div className="pagina-farol">
+
+      <Header />
+
+      <main id="farol" className="conteudo-principal">
+        <section className="apresentacao">
+          <span className="subtitulo">
+            <span className="ponto-amarelo">•</span>
+            SUA VIDA, COM MAIS DIREÇÃO
+          </span>
+
+          <h1>
+            Menos à deriva.
+            <br />
+            Mais perto do
+            <br />
+            <span>seu horizonte.</span>
+          </h1>
+
+          <p className="descricao">
+            Anote ideias, organize o dia e trace rotas para seus objetivos.
+            O Farol ilumina o caminho. Você conduz a jornada.
+          </p>
+
+          <div className="botoes-apresentacao">
+            <a className="botao botao-principal" href="#jornada">
+              Começar minha jornada <span>→</span>
+            </a>
+
+            <a className="botao botao-secundario" href="#como-funciona">
+              Conhecer o Farol <span>→</span>
+            </a>
+          </div>
+
+          <p className="texto-apoio">
+            Um espaço para suas notas, seus planos e seu próximo passo.
+          </p>
+        </section>
+
+
+        <section className="ilustracao">
+          <img
+            src="/farol.png"
+            alt="Farol iluminando o caminho"
+          />
+        </section>
+
+      </main>
+
+
+      <section id="recursos" className="secao-recursos">
+        <div className="recursos-cabecalho">
+          <h2>
+            Não é sobre fazer mais.
+            <br />
+            É sobre saber para onde ir.
+          </h2>
+
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            Entre uma ideia, uma tarefa e um sonho, existe um caminho.
+            O Farol ajuda você a dar sentido a cada passo.
           </p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+        <div className="recursos-lista">
+          <article className="recurso-card">
+            <span className="recurso-icone">✎</span>
+            <h3>Ideias em um porto seguro</h3>
+            <p>
+              Guarde pensamentos, lembretes e descobertas
+              antes que se percam no dia.
+            </p>
+          </article>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+          <article className="recurso-card">
+            <span className="recurso-icone">☷</span>
+            <h3>Objetivos com um caminho</h3>
+            <p>
+              Transforme planos distantes em etapas que você
+              consegue enxergar e percorrer.
+            </p>
+          </article>
+
+          <article className="recurso-card">
+            <span className="recurso-icone">▦</span>
+            <h3>Um dia com mais clareza</h3>
+            <p>
+              Reúna tarefas, compromissos e prioridades sem
+              perder a visão do todo.
+            </p>
+          </article>
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+
+      <footer id="como-funciona" className="rodape">
+        <span className="frase-rodape">
+          DA IDEIA AO PRÓXIMO PASSO
+        </span>
+        <span>01 Capture o que importa</span>
+        <span>02 Encontre sua direção</span>
+        <span>03 Avance no seu ritmo</span>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
