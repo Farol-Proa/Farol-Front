@@ -2,6 +2,7 @@ import Header from "./header";
 import "./App.css";
 import { useState } from "react";
 import Painel from "./pages/Painel";
+import heroFarol from "./assets/hero_farol.png";
 
 function App() {
 
@@ -14,9 +15,13 @@ function App() {
   return (
     <div className="pagina-farol">
 
-      <Header onEntrar={() => setMostrarPainel(true)}/>
+      <Header onEntrar={() => setMostrarPainel(true)} />
 
-      <main id="farol" className="conteudo-principal">
+      <main
+        id="farol"
+        className="hero"
+        style={{ "--hero-imagem": `url("${heroFarol}")` }}
+      >
         <section className="apresentacao">
           <span className="subtitulo">
             <span className="ponto-amarelo">•</span>
@@ -50,15 +55,6 @@ function App() {
             Um espaço para suas notas, seus planos e seu próximo passo.
           </p>
         </section>
-
-
-        <section className="ilustracao">
-          <img
-            src="/farol.png"
-            alt="Farol iluminando o caminho"
-          />
-        </section>
-
       </main>
 
 

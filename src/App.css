@@ -12,14 +12,33 @@
   color: var(--texto);
 }
 
+/* =========================
+   CABEÇALHO
+========================= */
+
 .cabecalho {
   min-height: 74px;
-  padding: 12px 6.2%;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 12px 6.2%;
   gap: 24px;
-  border-bottom: 1px solid #202b40;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  justify-content: space-between;
+  background-color: transparent;
+  transition:
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.cabecalho.scrolled {
+  background-color: rgba(7, 14, 28, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .logo {
@@ -68,6 +87,10 @@
   cursor: pointer;
 }
 
+/* =========================
+   BOTÕES
+========================= */
+
 .botao {
   min-height: 42px;
   padding: 0 17px;
@@ -79,7 +102,14 @@
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.botao:hover {
+  transform: translateY(-2px);
 }
 
 .botao-principal {
@@ -91,26 +121,65 @@
   background: #4770ff;
 }
 
-.conteudo-principal {
+.botao-secundario {
+  border: 1px solid #52617b;
+  color: var(--texto);
+  background: rgba(7, 14, 28, 0.25);
+}
+
+.botao-secundario:hover {
+  background: rgba(18, 29, 50, 0.85);
+  border-color: #8494b2;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+
   width: 100%;
-  max-width: 1440px;
-  min-height: 522px;
-  margin: 0 auto;
-  padding: 52px 6.2% 46px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
   align-items: center;
-  gap: 42px;
+
+  padding: 130px 6.2% 70px;
+
+  background-color: var(--fundo);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(7, 14, 28, 0.96) 0%,
+      rgba(7, 14, 28, 0.82) 35%,
+      rgba(7, 14, 28, 0.35) 65%,
+      rgba(7, 14, 28, 0.12) 100%
+    ),
+    var(--hero-imagem);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .apresentacao {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 610px;
   min-width: 0;
+  justify-content: start;
 }
 
 .subtitulo {
   color: var(--amarelo);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
+  letter-spacing: 1.4px;
 }
 
 .ponto-amarelo {
@@ -119,10 +188,10 @@
 }
 
 .apresentacao h1 {
-  margin: 20px 0;
-  font-size: clamp(36px, 3.4vw, 50px);
-  line-height: 1.08;
-  letter-spacing: -1.4px;
+  margin: 24px 0;
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -2px;
 }
 
 .apresentacao h1 span {
@@ -130,122 +199,36 @@
 }
 
 .descricao {
-  max-width: 510px;
-  margin-bottom: 20px;
+  max-width: 480px;
+  margin: 0 0 26px;
+
   color: var(--texto-secundario);
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.8;
 }
 
 .botoes-apresentacao {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-}
-
-.botao-secundario {
-  border: 1px solid #293650;
-  color: var(--texto);
-}
-
-.botao-secundario:hover {
-  background: #121d32;
+  gap: 14px;
 }
 
 .texto-apoio {
-  margin-top: 22px;
-  color: #8291ad;
-  font-size: 10px;
-}
-
-.ilustracao {
-  width: 100%;
-  min-height: 390px;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 24px;
-  background: #132451;
-}
-
-.aviso-ilustracao {
-  max-width: 260px;
-  padding: 20px;
-  color: #c3cce2;
-  font-size: 14px;
+  margin-top: 26px;
+  color: #b2bfd6;
+  font-size: 12px;
   line-height: 1.6;
-  text-align: center;
 }
 
-.rodape {
-  min-height: 62px;
-  padding: 20px 6.2%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border-top: 1px solid #202b40;
-  color: var(--texto-secundario);
-  font-size: 10px;
-}
-
-.frase-rodape {
-  color: #8291ad;
-}
-
-@media (max-width: 760px) {
-  .cabecalho {
-    flex-wrap: wrap;
-    padding: 14px 5%;
-  }
-
-  .navegacao {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    gap: 18px;
-  }
-
-  .acoes-cabecalho {
-    gap: 12px;
-  }
-
-  .acoes-cabecalho .botao {
-    padding: 0 10px;
-  }
-
-  .conteudo-principal {
-    grid-template-columns: 1fr;
-    padding: 44px 5%;
-    gap: 30px;
-  }
-
-  .apresentacao h1 {
-    font-size: clamp(36px, 8vw, 48px);
-  }
-
-  .ilustracao {
-    min-height: 300px;
-  }
-
-  .rodape {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-}
-
-
-.ilustracao img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+/* =========================
+   SEÇÃO DE RECURSOS
+========================= */
 
 .secao-recursos {
-  padding: 42px 6.2% 0;
-  background: #070e1c;
-  color: #f4f5ff;
+  position: relative;
+  padding: 72px 6.2% 64px;
+  background: var(--fundo);
+  color: var(--texto);
 }
 
 .recursos-cabecalho {
@@ -253,20 +236,20 @@
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
   gap: 40px;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 .recursos-cabecalho h2 {
   margin: 0;
-  font-size: clamp(22px, 2.2vw, 28px);
-  line-height: 1.15;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.2;
 }
 
 .recursos-cabecalho p {
   margin: 0;
-  color: #aab8d3;
-  font-size: 13px;
-  line-height: 1.7;
+  color: var(--texto-secundario);
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 .recursos-lista {
@@ -277,35 +260,144 @@
 
 .recurso-card {
   min-width: 0;
-  padding: 22px 20px;
+  padding: 26px 22px;
   background: #111d35;
   border: 1px solid #263653;
   border-radius: 18px;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.recurso-card:hover {
+  transform: translateY(-4px);
+  border-color: #3e5c94;
 }
 
 .recurso-icone {
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   color: #3970ff;
-  font-size: 23px;
+  font-size: 25px;
 }
 
 .recurso-card h3 {
   margin: 0 0 12px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
 }
 
 .recurso-card p {
   margin: 0;
-  color: #aab8d3;
-  font-size: 12px;
-  line-height: 1.6;
+  color: var(--texto-secundario);
+  font-size: 13px;
+  line-height: 1.7;
 }
 
+/* =========================
+   RODAPÉ
+========================= */
+
+.rodape {
+  min-height: 62px;
+  padding: 24px 6.2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-top: 1px solid #202b40;
+  color: var(--texto-secundario);
+  font-size: 11px;
+}
+
+.frase-rodape {
+  color: #8291ad;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   TABLETS E CELULARES
+========================= */
+
 @media (max-width: 760px) {
+  .cabecalho {
+    flex-wrap: wrap;
+    padding: 12px 5%;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 21px;
+  }
+
+  .logo-icone {
+    width: 38px;
+    height: 38px;
+    font-size: 23px;
+  }
+
+  .navegacao {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .navegacao a {
+    font-size: 11px;
+  }
+
+  .acoes-cabecalho {
+    gap: 12px;
+  }
+
+  .acoes-cabecalho .botao {
+    padding: 0 10px;
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding: 160px 5% 60px;
+    align-items: center;
+
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(7, 14, 28, 0.91) 0%,
+        rgba(7, 14, 28, 0.72) 60%,
+        rgba(7, 14, 28, 0.45) 100%
+      ),
+      url("/hero_farol.png");
+
+    background-position: center;
+  }
+
+  .apresentacao {
+    max-width: 540px;
+  }
+
+  .apresentacao h1 {
+    font-size: clamp(38px, 9vw, 54px);
+    letter-spacing: -1.5px;
+  }
+
+  .descricao {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .botoes-apresentacao {
+    gap: 10px;
+  }
+
+  .texto-apoio {
+    font-size: 11px;
+  }
+
   .secao-recursos {
-    padding: 36px 5% 28px;
+    padding: 48px 5% 40px;
   }
 
   .recursos-cabecalho {
@@ -316,5 +408,50 @@
   .recursos-lista {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .rodape {
+    padding: 24px 5%;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+}
+
+/* =========================
+   TELAS MUITO PEQUENAS
+========================= */
+
+@media (max-width: 400px) {
+  .cabecalho {
+    padding: 10px 4%;
+  }
+
+  .navegacao {
+    gap: 12px;
+  }
+
+  .navegacao a {
+    font-size: 10px;
+  }
+
+  .acoes-cabecalho {
+    gap: 8px;
+  }
+
+  .acoes-cabecalho .botao {
+    font-size: 10px;
+  }
+
+  .hero {
+    padding: 155px 5% 45px;
+  }
+
+  .apresentacao h1 {
+    font-size: 36px;
+  }
+
+  .botoes-apresentacao {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

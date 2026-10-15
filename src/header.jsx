@@ -1,13 +1,37 @@
-function Header({onEntrar}) {
+
+
+import React, { useEffect, useState } from 'react';
+
+function Header({ onEntrar }) {
+    const [scrollPosition, setScrollPosition] = useState(0);
+        useEffect(() => {
+            const handleScroll = () => {
+                const posicaoAtual = window.scrollY;
+                setScrollPosition(posicaoAtual);
+                console.log('Posição do scroll:', posicaoAtual);
+
+                if (posicaoAtual > 20) {
+                    console.log('Usuário passou de 200px');
+                }
+            };
+
+            window.addEventListener('scroll', handleScroll);
+
+            // Limpeza do evento ao desmontar o componente
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }, []);
+
     return (
         <>
-            <header className="cabecalho">
+            <header className={"cabecalho" + (scrollPosition > 50 ? " scrolled" : "")}>
                 <a className="logo" href="#">
                     <span className="logo-icone">✦</span>
                     <span>Farol</span>
                 </a>
 
-                <nav className="navegacao bg-black">
+                <nav className="navegacao">
                     <a href="#farol">O Farol</a>
                     <a href="#recursos">Recursos</a>
                     <a href="#como-funciona">Como funciona</a>
