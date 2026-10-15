@@ -1,0 +1,656 @@
+
+.painel {
+  --fundo: #070c16;
+  --cartao: #12203e;
+  --borda: #26395c;
+  --texto: #f4f5ff;
+  --secundario: #a9b8d4;
+  --azul: #315cf5;
+
+  display: flex;
+  min-height: 100vh;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: Arial, sans-serif;
+}
+
+.menu-lateral {
+  width: 190px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 14px;
+  background: #050911;
+  border-right: 1px solid #19243a;
+}
+
+.marca-painel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.marca-painel h2 {
+  font-size: 20px;
+}
+
+.marca-icone {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--azul);
+  color: #ffe64a;
+}
+
+.menu-opcoes {
+  display: grid;
+  gap: 10px;
+}
+
+.menu-opcoes a,
+.configuracao {
+  padding: 12px 10px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--secundario);
+  background: transparent;
+  text-align: left;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.menu-opcoes a:hover,
+.menu-opcoes .menu-ativo {
+  background: var(--azul);
+  color: white;
+}
+
+.meta-lateral {
+  margin-top: auto;
+  padding: 20px 10px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  background: var(--cartao);
+}
+
+.mini-farol {
+  font-size: 42px;
+  color: #ffe64a;
+}
+
+.meta-lateral strong {
+  font-size: 22px;
+}
+
+.configuracao {
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.painel-conteudo {
+  flex: 1;
+  min-width: 0;
+  padding: 22px;
+}
+
+.painel-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.painel-topo h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.perfil {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--azul);
+}
+
+.boas-vindas {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-radius: 18px;
+  background: var(--cartao);
+  margin-bottom: 16px;
+}
+
+.boas-vindas h2 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.boas-vindas p,
+.data-painel span {
+  color: var(--secundario);
+  font-size: 12px;
+}
+
+.data-painel {
+  display: grid;
+  gap: 14px;
+  text-align: right;
+}
+
+.painel-grade {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 14px;
+}
+
+.painel-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  background: var(--cartao);
+}
+
+.painel-card h3 {
+  margin: 0 0 16px;
+  font-size: 15px;
+}
+
+.painel-card h3 button {
+  float: right;
+  width: 27px;
+  height: 27px;
+  margin-top: -5px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--azul);
+  color: white;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.nota {
+  padding: 13px 10px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  background: #1c2b49;
+  font-size: 12px;
+}
+
+.calendario-card p,
+.jornada-card p,
+.tarefas-card p {
+  color: var(--secundario);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.jornada-card {
+  text-align: center;
+}
+
+.progresso {
+  width: 112px;
+  height: 112px;
+  margin: 20px auto;
+  display: grid;
+  place-items: center;
+  border: 12px solid #2d4bd0;
+  border-right-color: #283854;
+  border-radius: 50%;
+}
+
+.progresso span {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: var(--azul);
+  font-size: 12px;
+}
+
+.ilhas-card {
+  grid-column: span 2;
+}
+
+.ilha-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ilha {
+  flex: 1;
+  min-width: 130px;
+  min-height: 120px;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--azul);
+  text-align: center;
+  font-size: 13px;
+}
+
+.adicionar-ilha {
+  width: 75px;
+  border: 2px solid var(--azul);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--azul);
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.tarefas-card {
+  grid-column: span 1;
+}
+
+@media (max-width: 950px) {
+  .menu-lateral {
+    width: 155px;
+  }
+
+  .painel-grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ilhas-card {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .painel {
+    flex-direction: column;
+  }
+
+  .menu-lateral {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .marca-painel {
+    margin-bottom: 12px;
+  }
+
+  .menu-opcoes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .menu-opcoes a {
+    padding: 10px 5px;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .meta-lateral,
+  .configuracao {
+    display: none;
+  }
+
+  .painel-conteudo {
+    padding: 14px;
+  }
+
+  .boas-vindas {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .data-painel {
+    text-align: left;
+  }
+
+  .painel-grade {
+    grid-template-columns: 1fr;
+  }
+
+  .ilhas-card,
+  .tarefas-card {
+    grid-column: span 1;
+  }
+}
+
+
+.form-nota {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.form-nota input {
+  width: 100%;
+  min-width: 0;
+  padding: 9px;
+  border: 1px solid #344667;
+  border-radius: 8px;
+  outline: none;
+  background: #0b1529;
+  color: #f4f5ff;
+  font-size: 12px;
+}
+
+.form-nota input:focus {
+  border-color: #315cf5;
+}
+
+.form-nota button {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background: #315cf5;
+  color: white;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.lista-notas {
+  display: grid;
+  gap: 8px;
+}
+
+.nota {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 10px;
+  margin: 0;
+  border-radius: 10px;
+  background: #1c2b49;
+  font-size: 12px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.nota input {
+  flex-shrink: 0;
+  accent-color: #315cf5;
+}
+
+.nota-concluida span {
+  color: #9aa8c0;
+  text-decoration: line-through;
+}
+
+
+.form-objetivo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.form-objetivo input {
+  flex: 1;
+  min-width: 180px;
+  padding: 10px;
+  border: 1px solid #344667;
+  border-radius: 8px;
+  outline: none;
+  background: #0b1529;
+  color: #f4f5ff;
+}
+
+.form-objetivo input:focus {
+  border-color: #315cf5;
+}
+
+.form-objetivo button {
+  padding: 9px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #315cf5;
+  color: white;
+  cursor: pointer;
+}
+
+.form-objetivo button[type="button"] {
+  background: #293650;
+}
+
+.ilha {
+  overflow-wrap: anywhere;
+}
+
+
+.form-tarefa {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.form-tarefa input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #344667;
+  border-radius: 8px;
+  background: #0b1529;
+  color: #f4f5ff;
+  outline: none;
+}
+
+.form-tarefa input:focus {
+  border-color: #315cf5;
+}
+
+.form-tarefa button {
+  width: 38px;
+  border: none;
+  border-radius: 8px;
+  background: #315cf5;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.lista-tarefas {
+  display: grid;
+  gap: 8px;
+}
+
+.item-tarefa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #1c2b49;
+  font-size: 12px;
+}
+
+.item-tarefa label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.item-tarefa label span {
+  overflow-wrap: anywhere;
+}
+
+.item-tarefa input[type="checkbox"] {
+  accent-color: #315cf5;
+}
+
+.tarefa-concluida {
+  color: #9aa8c0;
+  text-decoration: line-through;
+}
+
+.remover-tarefa {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: #ff8c8c;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.barra-progresso {
+    width: 100%;
+    height: 10px;
+    margin-top: 12px;
+    background-color: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.barra-progresso-preenchida {
+    height: 100%;
+    background-color: #1836c0;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+
+.ilha-concluida {
+    opacity: 0.7;
+    border: 1px solid #1836c0;
+}
+
+.concluir-objetivo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.concluir-objetivo input {
+    cursor: pointer;
+}
+    
+
+.dias {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    padding: 10px 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background-color: white;
+    color: #101c34;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.dia span {
+    color: inherit;
+    font-size: 11px;
+    text-align: center;
+}
+
+.dia strong {
+    font-size: 16px;
+}
+
+.dia:hover {
+    border-color: #1836c0;
+}
+
+.dia-selecionado {
+    background-color: #1836c0;
+    border-color: #1836c0;
+    color: white;
+}
+
+
+.dia strong {
+    font-size: 18px;
+}
+
+.dia:hover {
+    border-color: #1836c0;
+}
+
+.dia-selecionado {
+    background-color: #1836c0;
+    border-color: #1836c0;
+    color: white;
+}
+
+.dia-com-tarefa {
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: #1836c0;
+    border-radius: 50%;
+    margin-top: 4px;
+}
+
+.remover-nota {
+    cursor: pointer;
+    color: #dc2626;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.remover-nota:hover {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* O cursor padrão não deve ser de clique no card inteiro */
+.nota {
+    cursor: default;
+}
+
+.nota label {
+    cursor: pointer;
+}
+.ilha-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.remover-objetivo {
+    cursor: pointer;
+    color: #dc2626;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.remover-objetivo:hover {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}

@@ -1,4 +1,4 @@
-function Header() {
+function Header({onEntrar}) {
     return (
         <>
             <header className="cabecalho">
@@ -14,7 +14,7 @@ function Header() {
                 </nav>
 
                 <div className="acoes-cabecalho">
-                    <button className="botao-entrar">Entrar</button>
+                    <button className="botao-entrar" onClick={onEntrar}>Entrar</button>
                     <a className="botao botao-principal" href="#jornada">
                         Começar agora <span>→</span>
                     </a>

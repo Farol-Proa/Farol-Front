@@ -1,11 +1,20 @@
 import Header from "./header";
 import "./App.css";
+import { useState } from "react";
+import Painel from "./pages/Painel";
 
 function App() {
+
+  const [mostrarPainel, setMostrarPainel] = useState(false);
+
+  if (mostrarPainel) {
+    return <Painel />;
+  }
+
   return (
     <div className="pagina-farol">
 
-      <Header />
+      <Header onEntrar={() => setMostrarPainel(true)}/>
 
       <main id="farol" className="conteudo-principal">
         <section className="apresentacao">
@@ -108,6 +117,7 @@ function App() {
       </footer>
     </div>
   );
+
 }
 
 export default App;
