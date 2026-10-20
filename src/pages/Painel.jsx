@@ -1,13 +1,60 @@
 import { useState } from "react";
 import "./Painel.css";
 
-function Painel() {
+function Painel({ onAbrirIlha }) {
 
 
     const [dataSelecionada, setDataSelecionada] = useState(
         new Date().toLocaleDateString("en-CA")
     );
+    const [mesExibido, setMesExibido] = useState(() => {
+        const hoje = new Date();
+        return new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+    });
 
+    function mudarMes(diferenca) {
+        setMesExibido((mesAtual) =>
+            new Date(
+                mesAtual.getFullYear(),
+                mesAtual.getMonth() + diferenca,
+                1
+            )
+        );
+    }
+
+    function obterDiasDoMes() {
+        const ano = mesExibido.getFullYear();
+        const mes = mesExibido.getMonth();
+
+        const primeiroDia = new Date(ano, mes, 1);
+        const ultimoDia = new Date(ano, mes + 1, 0);
+
+        const diasAntes = (primeiroDia.getDay() + 6) % 7;
+        const totalDias = ultimoDia.getDate();
+
+        const dias = [];
+
+        for (let i = 0; i < diasAntes; i++) {
+            dias.push(null);
+        }
+
+        for (let dia = 1; dia <= totalDias; dia++) {
+            const data = new Date(ano, mes, dia);
+
+            const dataFormatada = [
+                data.getFullYear(),
+                String(data.getMonth() + 1).padStart(2, "0"),
+                String(data.getDate()).padStart(2, "0")
+            ].join("-");
+
+            dias.push({
+                dia,
+                dataFormatada
+            });
+        }
+
+        return dias;
+    }
 
     function alternarObjetivo(id) {
         setObjetivos(
@@ -28,6 +75,8 @@ function Painel() {
 
     const [tarefas, setTarefas] = useState([]);
     const [novaTarefa, setNovaTarefa] = useState("");
+    const [novoHorario, setNovoHorario] = useState("09:00");
+    const [novaPrioridade, setNovaPrioridade] = useState("Média");
 
 
 
@@ -42,11 +91,16 @@ function Painel() {
             id: Date.now(),
             texto: novaTarefa.trim(),
             concluida: false,
-            data: dataSelecionada
+            data: dataSelecionada,
+            horario: novoHorario,
+            prioridade: novaPrioridade
         };
 
-        setTarefas([...tarefas, tarefa]);
+        setTarefas((tarefasAtuais) => [...tarefasAtuais, tarefa]);
+
         setNovaTarefa("");
+        setNovoHorario("09:00");
+        setNovaPrioridade("Média");
     }
 
 
@@ -66,10 +120,19 @@ function Painel() {
 
 
     const [objetivos, setObjetivos] = useState([
-        { id: 1, nome: "Meu primeiro objetivo" }
+        {
+            id: 1,
+            nome: "Meu primeiro objetivo",
+            concluido: false,
+            etapas: [
+                { id: 1, texto: "Primeira etapa", concluida: false },
+                { id: 2, texto: "Segunda etapa", concluida: false }
+            ]
+        }
     ]);
 
     const [novoObjetivo, setNovoObjetivo] = useState("");
+    const [novaEtapa, setNovaEtapa] = useState("");
     const [mostrarFormularioObjetivo, setMostrarFormularioObjetivo] = useState(false);
 
     function adicionarObjetivo(event) {
@@ -82,7 +145,8 @@ function Painel() {
         const objetivo = {
             id: Date.now(),
             nome: novoObjetivo.trim(),
-            concluido: false
+            concluido: false,
+            etapas: []
         };
 
         setObjetivos([...objetivos, objetivo]);
@@ -90,6 +154,88 @@ function Painel() {
         setMostrarFormularioObjetivo(false);
     }
 
+    function adicionarEtapa(idObjetivo) {
+        if (novaEtapa.trim() === "") {
+            return;
+        }
+
+        setObjetivos(
+            objetivos.map((objetivo) => {
+                if (objetivo.id === idObjetivo) {
+                    return {
+                        ...objetivo,
+                        etapas: [
+                            ...objetivo.etapas,
+                            {
+                                id: Date.now(),
+                                texto: novaEtapa.trim(),
+                                concluida: false
+                            }
+                        ]
+                    };
+                }
+
+                return objetivo;
+            })
+        );
+
+        setNovaEtapa("");
+    }
+
+    function alternarEtapa(idObjetivo, idEtapa) {
+        setObjetivos(
+            objetivos.map((objetivo) => {
+                if (objetivo.id === idObjetivo) {
+                    return {
+                        ...objetivo,
+                        etapas: objetivo.etapas.map((etapa) => {
+                            if (etapa.id === idEtapa) {
+                                return {
+                                    ...etapa,
+                                    concluida: !etapa.concluida
+                                };
+                            }
+
+                            return etapa;
+                        })
+                    };
+                }
+
+                return objetivo;
+            })
+        );
+    }
+
+    function excluirEtapa(idObjetivo, idEtapa) {
+        setObjetivos(
+            objetivos.map((objetivo) => {
+                if (objetivo.id === idObjetivo) {
+                    return {
+                        ...objetivo,
+                        etapas: objetivo.etapas.filter(
+                            (etapa) => etapa.id !== idEtapa
+                        )
+                    };
+                }
+
+                return objetivo;
+            })
+        );
+    }
+
+    function calcularProgressoIlha(objetivo) {
+        if (!objetivo.etapas || objetivo.etapas.length === 0) {
+            return 0;
+        }
+
+        const etapasConcluidas = (objetivo.etapas || []).filter(
+            (etapa) => etapa.concluida
+        ).length;
+
+        return Math.round(
+            (etapasConcluidas / objetivo.etapas.length) * 100
+        );
+    }
 
     const [notas, setNotas] = useState([
         { id: 1, texto: "Revisar resumo do TCC", concluida: true },
@@ -133,11 +279,22 @@ function Painel() {
     }
 
 
-    const totalItens = tarefas.length + objetivos.length;
+    const totalEtapas = objetivos.reduce(
+        (total, objetivo) => total + objetivo.etapas.length,
+        0
+    );
+
+    const etapasConcluidas = objetivos.reduce(
+        (total, objetivo) =>
+            total + objetivo.etapas.filter((etapa) => etapa.concluida).length,
+        0
+    );
+
+    const totalItens = tarefas.length + totalEtapas;
 
     const itensConcluidos =
         tarefas.filter((tarefa) => tarefa.concluida).length +
-        objetivos.filter((objetivo) => objetivo.concluido).length;
+        etapasConcluidas;
 
     const progresso =
         totalItens === 0
@@ -252,43 +409,73 @@ function Painel() {
 
 
                     <article className="painel-card calendario-card" id="calendario">
-                        <h3>Minha semana</h3>
+                        <h3>Meu calendário</h3>
                         <p>Organize seu tempo e suas prioridades.</p>
 
-                        <div className="dias">
-                            {["SEG", "TER", "QUA", "QUI", "SEX", "SÁB", "DOM"].map(
-                                (dia, indice) => {
-                                    const hoje = new Date();
-                                    const diaDaSemana = (hoje.getDay() + 6) % 7;
-                                    const data = new Date(hoje);
+                        <div className="navegacao-mes">
+                            <button
+                                type="button"
+                                onClick={() => mudarMes(-1)}
+                                aria-label="Mês anterior"
+                            >
+                                ‹
+                            </button>
 
-                                    data.setDate(hoje.getDate() - diaDaSemana + indice);
+                            <strong>
+                                {mesExibido.toLocaleDateString("pt-BR", {
+                                    month: "long",
+                                    year: "numeric"
+                                })}
+                            </strong>
 
-                                    const dataFormatada = [
-                                        data.getFullYear(),
-                                        String(data.getMonth() + 1).padStart(2, "0"),
-                                        String(data.getDate()).padStart(2, "0")
-                                    ].join("-");
+                            <button
+                                type="button"
+                                onClick={() => mudarMes(1)}
+                                aria-label="Próximo mês"
+                            >
+                                ›
+                            </button>
+                        </div>
 
+                        <div className="calendario-mensal">
+                            {["SEG", "TER", "QUA", "QUI", "SEX", "SÁB", "DOM"].map((dia) => (
+                                <strong className="nome-dia" key={dia}>
+                                    {dia}
+                                </strong>
+                            ))}
+
+                            {obterDiasDoMes().map((item, indice) => {
+                                if (item === null) {
                                     return (
-                                        <button
-                                            type="button"
-                                            key={dia}
-                                            className={`dia ${dataSelecionada === dataFormatada
-                                                ? "dia-selecionado"
-                                                : ""
-                                                }`}
-                                            onClick={() => setDataSelecionada(dataFormatada)}
-                                        >
-                                            <span>{dia}</span>
-                                            <strong>{data.getDate()}</strong>
-                                            {tarefas.some((tarefa) => tarefa.data === dataFormatada) && (
-                                                <span className="dia-com-tarefa"></span>
-                                            )}
-                                        </button>
+                                        <div
+                                            className="dia-vazio"
+                                            key={`vazio-${indice}`}
+                                        />
                                     );
                                 }
-                            )}
+
+                                const temTarefa = tarefas.some(
+                                    (tarefa) => tarefa.data === item.dataFormatada
+                                );
+
+                                return (
+                                    <button
+                                        type="button"
+                                        key={item.dataFormatada}
+                                        className={`dia ${dataSelecionada === item.dataFormatada
+                                            ? "dia-selecionado"
+                                            : ""
+                                            }`}
+                                        onClick={() => setDataSelecionada(item.dataFormatada)}
+                                    >
+                                        <span>{item.dia}</span>
+
+                                        {temTarefa && (
+                                            <span className="dia-com-tarefa"></span>
+                                        )}
+                                    </button>
+                                );
+                            })}
                         </div>
 
                         <p>Data selecionada: {dataSelecionada}</p>
@@ -332,7 +519,9 @@ function Painel() {
                                     type="text"
                                     placeholder="Qual é o seu objetivo?"
                                     value={novoObjetivo}
-                                    onChange={(event) => setNovoObjetivo(event.target.value)}
+                                    onChange={(event) =>
+                                        setNovoObjetivo(event.target.value)
+                                    }
                                 />
 
                                 <button type="submit">Criar objetivo</button>
@@ -348,10 +537,10 @@ function Painel() {
 
                         <div className="ilha-lista">
                             {objetivos.map((objetivo) => (
-
                                 <div
                                     className={`ilha ${objetivo.concluido ? "ilha-concluida" : ""}`}
                                     key={objetivo.id}
+                                    onClick={() => onAbrirIlha(objetivo)}
                                 >
                                     <div className="ilha-info">
                                         <span>{objetivo.nome}</span>
@@ -359,7 +548,10 @@ function Painel() {
                                         <button
                                             type="button"
                                             className="remover-objetivo"
-                                            onClick={() => removerObjetivo(objetivo.id)}
+                                            onClick={(event) => {
+                                                event.stopPropagation();
+                                                removerObjetivo(objetivo.id);
+                                            }}
                                             aria-label={`Excluir objetivo ${objetivo.nome}`}
                                         >
                                             ×
@@ -374,8 +566,75 @@ function Painel() {
                                         />
                                         Concluído
                                     </label>
-                                </div>
 
+                                    <div className="progresso-ilha">
+                                        <div className="progresso-ilha-info">
+                                            <span>Progresso</span>
+                                            <span>{calcularProgressoIlha(objetivo)}%</span>
+                                        </div>
+
+                                        <progress
+                                            value={calcularProgressoIlha(objetivo)}
+                                            max="100"
+                                        />
+                                    </div>
+
+                                    <form
+                                        className="form-etapa"
+                                        onClick={(event) => event.stopPropagation()}
+                                        onSubmit={(event) => {
+                                            event.preventDefault();
+                                            adicionarEtapa(objetivo.id);
+                                        }}
+                                    >
+                                        <input
+                                            type="text"
+                                            placeholder="Digite uma etapa..."
+                                            value={novaEtapa}
+                                            onChange={(event) =>
+                                                setNovaEtapa(event.target.value)
+                                            }
+                                        />
+
+                                        <button type="submit">Adicionar etapa</button>
+                                    </form>
+
+                                    <div className="lista-etapas">
+                                        {objetivo.etapas.map((etapa) => (
+                                            <div className="item-etapa" key={etapa.id}>
+                                                <label>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={etapa.concluida}
+                                                        onChange={() =>
+                                                            alternarEtapa(objetivo.id, etapa.id)
+                                                        }
+                                                    />
+
+                                                    <span
+                                                        className={
+                                                            etapa.concluida
+                                                                ? "etapa-concluida"
+                                                                : ""
+                                                        }
+                                                    >
+                                                        {etapa.texto}
+                                                    </span>
+                                                </label>
+
+                                                <button
+                                                    type="button"
+                                                    onClick={() =>
+                                                        excluirEtapa(objetivo.id, etapa.id)
+                                                    }
+                                                    aria-label={`Excluir etapa ${etapa.texto}`}
+                                                >
+                                                    ×
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                             ))}
 
                             <button
@@ -402,7 +661,24 @@ function Painel() {
                                 onChange={(event) => setNovaTarefa(event.target.value)}
                             />
 
-                            <button type="submit">+</button>
+                            <input
+                                type="time"
+                                value={novoHorario}
+                                onChange={(event) => setNovoHorario(event.target.value)}
+                                aria-label="Horário da tarefa"
+                            />
+
+                            <select
+                                value={novaPrioridade}
+                                onChange={(event) => setNovaPrioridade(event.target.value)}
+                                aria-label="Prioridade da tarefa"
+                            >
+                                <option value="Baixa">Baixa prioridade</option>
+                                <option value="Média">Média prioridade</option>
+                                <option value="Alta">Alta prioridade</option>
+                            </select>
+
+                            <button type="submit">Adicionar</button>
                         </form>
 
                         {tarefas.length === 0 ? (
@@ -426,6 +702,9 @@ function Painel() {
 
                                                     <span className={tarefa.concluida ? "tarefa-concluida" : ""}>
                                                         {tarefa.texto}
+                                                        <small>
+                                                            {tarefa.horario} · Prioridade {tarefa.prioridade}
+                                                        </small>
                                                     </span>
                                                 </label>
 

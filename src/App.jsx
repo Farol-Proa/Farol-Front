@@ -1,4 +1,5 @@
 import Header from "./header";
+import MapaIlha from "./pages/MapaIlha";
 import "./App.css";
 import { useState } from "react";
 import Painel from "./pages/Painel";
@@ -7,9 +8,23 @@ import heroFarol from "./assets/hero_farol.png";
 function App() {
 
   const [mostrarPainel, setMostrarPainel] = useState(false);
+  const [ilhaSelecionada, setIlhaSelecionada] = useState(null);
+
+  if (ilhaSelecionada) {
+    return (
+      <MapaIlha
+        ilha={ilhaSelecionada}
+        onVoltar={() => setIlhaSelecionada(null)}
+      />
+    );
+  }
 
   if (mostrarPainel) {
-    return <Painel />;
+    return (
+      <Painel
+        onAbrirIlha={(ilha) => setIlhaSelecionada(ilha)}
+      />
+    );
   }
 
   return (
