@@ -1,4 +1,4 @@
-import Header from "./header";
+import Header from "./components/header";
 import MapaIlha from "./pages/MapaIlha";
 import "./App.css";
 import { useState } from "react";
