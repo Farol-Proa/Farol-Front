@@ -162,7 +162,18 @@
 }
 
 .form-tarefa input[type="text"] {
-  flex: 1;
+  flex: 1 1 130px;
+}
+
+.form-tarefa input[type="time"],
+.form-tarefa select {
+  min-width: 0;
+  padding: 10px 8px;
+  border: 1px solid var(--color-farol-input-border);
+  border-radius: 8px;
+  background: var(--color-farol-input);
+  color: var(--color-farol-text);
+  font-size: 12px;
 }
 
 .form-tarefa button {
