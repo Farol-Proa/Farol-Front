@@ -1,164 +1,25 @@
 
-.painel {
-  --fundo: #070c16;
-  --cartao: #12203e;
-  --borda: #26395c;
-  --texto: #f4f5ff;
-  --secundario: #a9b8d4;
-  --azul: #315cf5;
-
-  display: flex;
-  min-height: 100vh;
-  background: var(--fundo);
-  color: var(--texto);
-  font-family: Arial, sans-serif;
-}
-
-.menu-lateral {
-  width: 190px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 14px;
-  background: #050911;
-  border-right: 1px solid #19243a;
-}
-
-.marca-painel {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 35px;
-}
-
-.marca-painel h2 {
-  font-size: 20px;
-}
-
-.marca-icone {
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--azul);
-  color: #ffe64a;
-}
-
-.menu-opcoes {
-  display: grid;
-  gap: 10px;
-}
-
-.menu-opcoes a,
-.configuracao {
+.dashboard-nav-link {
   padding: 12px 10px;
   border: 0;
   border-radius: 8px;
-  color: var(--secundario);
   background: transparent;
+  color: var(--color-farol-muted);
+  font-size: 13px;
   text-align: left;
   text-decoration: none;
-  font-size: 13px;
 }
 
-.menu-opcoes a:hover,
-.menu-opcoes .menu-ativo {
-  background: var(--azul);
+.dashboard-nav-link:hover,
+.dashboard-nav-active {
+  background: var(--color-farol-primary);
   color: white;
 }
 
-.meta-lateral {
-  margin-top: auto;
-  padding: 20px 10px;
-  display: grid;
-  justify-items: center;
-  gap: 10px;
-  border-radius: 12px;
-  background: var(--cartao);
-}
-
-.mini-farol {
-  font-size: 42px;
-  color: #ffe64a;
-}
-
-.meta-lateral strong {
-  font-size: 22px;
-}
-
-.configuracao {
-  margin-top: 12px;
-  cursor: pointer;
-}
-
-.painel-conteudo {
-  flex: 1;
-  min-width: 0;
-  padding: 22px;
-}
-
-.painel-topo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
-
-.painel-topo h1 {
-  margin: 0;
-  font-size: 26px;
-}
-
-.perfil {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--azul);
-}
-
-.boas-vindas {
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border-radius: 18px;
-  background: var(--cartao);
-  margin-bottom: 16px;
-}
-
-.boas-vindas h2 {
-  margin: 0 0 12px;
-  font-size: 22px;
-}
-
-.boas-vindas p,
-.data-painel span {
-  color: var(--secundario);
-  font-size: 12px;
-}
-
-.data-painel {
-  display: grid;
-  gap: 14px;
-  text-align: right;
-}
-
-.painel-grade {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 14px;
-}
-
 .painel-card {
-  min-width: 0;
-  padding: 16px;
-  border: 1px solid var(--borda);
+  border: 1px solid var(--color-farol-dashboard-border);
   border-radius: 16px;
-  background: var(--cartao);
+  background: var(--color-farol-dashboard-card);
 }
 
 .painel-card h3 {
@@ -173,30 +34,10 @@
   margin-top: -5px;
   border: 0;
   border-radius: 50%;
-  background: var(--azul);
+  background: var(--color-farol-primary);
   color: white;
   font-size: 19px;
   cursor: pointer;
-}
-
-.nota {
-  padding: 13px 10px;
-  margin-bottom: 8px;
-  border-radius: 10px;
-  background: #1c2b49;
-  font-size: 12px;
-}
-
-.calendario-card p,
-.jornada-card p,
-.tarefas-card p {
-  color: var(--secundario);
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-.jornada-card {
-  text-align: center;
 }
 
 .progresso {
@@ -205,26 +46,16 @@
   margin: 20px auto;
   display: grid;
   place-items: center;
-  border: 12px solid #2d4bd0;
-  border-right-color: #283854;
+  border: 12px solid var(--color-farol-progress-ring);
+  border-right-color: var(--color-farol-progress-track);
   border-radius: 50%;
 }
 
 .progresso span {
   padding: 5px 10px;
   border-radius: 20px;
-  background: var(--azul);
+  background: var(--color-farol-primary);
   font-size: 12px;
-}
-
-.ilhas-card {
-  grid-column: span 2;
-}
-
-.ilha-lista {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
 }
 
 .ilha {
@@ -235,128 +66,63 @@
   place-items: center;
   padding: 12px;
   border-radius: 14px;
-  background: var(--azul);
+  background: var(--color-farol-primary);
   text-align: center;
   font-size: 13px;
-}
-
-.adicionar-ilha {
-  width: 75px;
-  border: 2px solid var(--azul);
-  border-radius: 14px;
-  background: transparent;
-  color: var(--azul);
-  font-size: 32px;
-  cursor: pointer;
-}
-
-.tarefas-card {
-  grid-column: span 1;
-}
-
-@media (max-width: 950px) {
-  .menu-lateral {
-    width: 155px;
-  }
-
-  .painel-grade {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .ilhas-card {
-    grid-column: span 1;
-  }
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 600px) {
-  .painel {
-    flex-direction: column;
-  }
-
-  .menu-lateral {
-    width: 100%;
-    padding: 12px;
-  }
-
-  .marca-painel {
-    margin-bottom: 12px;
-  }
-
-  .menu-opcoes {
+  .dashboard-nav {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 5px;
   }
 
-  .menu-opcoes a {
+  .dashboard-nav .dashboard-nav-link {
     padding: 10px 5px;
     font-size: 11px;
     text-align: center;
   }
-
-  .meta-lateral,
-  .configuracao {
-    display: none;
-  }
-
-  .painel-conteudo {
-    padding: 14px;
-  }
-
-  .boas-vindas {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .data-painel {
-    text-align: left;
-  }
-
-  .painel-grade {
-    grid-template-columns: 1fr;
-  }
-
-  .ilhas-card,
-  .tarefas-card {
-    grid-column: span 1;
-  }
 }
 
-
-.form-nota {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 12px;
+.form-nota input,
+.form-objetivo input,
+.form-tarefa input[type="text"] {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--color-farol-input-border);
+  border-radius: 8px;
+  outline: none;
+  background: var(--color-farol-input);
+  color: var(--color-farol-text);
 }
 
 .form-nota input {
-  width: 100%;
-  min-width: 0;
   padding: 9px;
-  border: 1px solid #344667;
-  border-radius: 8px;
-  outline: none;
-  background: #0b1529;
-  color: #f4f5ff;
   font-size: 12px;
 }
 
-.form-nota input:focus {
-  border-color: #315cf5;
+.form-nota input:focus,
+.form-objetivo input:focus,
+.form-tarefa input:focus {
+  border-color: var(--color-farol-primary);
 }
 
-.form-nota button {
-  padding: 8px 10px;
-  border: none;
+.form-nota button,
+.form-objetivo button,
+.form-tarefa button {
+  border: 0;
   border-radius: 8px;
-  background: #315cf5;
+  background: var(--color-farol-primary);
   color: white;
-  font-size: 11px;
   cursor: pointer;
 }
 
-.lista-notas {
-  display: grid;
-  gap: 8px;
+.form-nota button {
+  flex-shrink: 0;
+  padding: 8px 10px;
+  font-size: 11px;
 }
 
 .nota {
@@ -366,97 +132,42 @@
   padding: 12px 10px;
   margin: 0;
   border-radius: 10px;
-  background: #1c2b49;
+  background: var(--color-farol-surface-raised);
   font-size: 12px;
-  cursor: pointer;
   overflow-wrap: anywhere;
 }
 
 .nota input {
   flex-shrink: 0;
-  accent-color: #315cf5;
+  accent-color: var(--color-farol-primary);
 }
 
 .nota-concluida span {
-  color: #9aa8c0;
+  color: var(--color-farol-text-subtle);
   text-decoration: line-through;
 }
 
 
-.form-objetivo {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
 .form-objetivo input {
   flex: 1;
   min-width: 180px;
-  padding: 10px;
-  border: 1px solid #344667;
-  border-radius: 8px;
-  outline: none;
-  background: #0b1529;
-  color: #f4f5ff;
-}
-
-.form-objetivo input:focus {
-  border-color: #315cf5;
 }
 
 .form-objetivo button {
   padding: 9px 12px;
-  border: none;
-  border-radius: 8px;
-  background: #315cf5;
-  color: white;
-  cursor: pointer;
 }
 
 .form-objetivo button[type="button"] {
-  background: #293650;
-}
-
-.ilha {
-  overflow-wrap: anywhere;
-}
-
-
-.form-tarefa {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 14px;
+  background: var(--color-farol-surface-muted);
 }
 
 .form-tarefa input[type="text"] {
   flex: 1;
-  min-width: 0;
-  padding: 10px;
-  border: 1px solid #344667;
-  border-radius: 8px;
-  background: #0b1529;
-  color: #f4f5ff;
-  outline: none;
-}
-
-.form-tarefa input:focus {
-  border-color: #315cf5;
 }
 
 .form-tarefa button {
   width: 38px;
-  border: none;
-  border-radius: 8px;
-  background: #315cf5;
-  color: white;
   font-size: 20px;
-  cursor: pointer;
-}
-
-.lista-tarefas {
-  display: grid;
-  gap: 8px;
 }
 
 .item-tarefa {
@@ -466,7 +177,7 @@
   gap: 8px;
   padding: 10px;
   border-radius: 8px;
-  background: #1c2b49;
+  background: var(--color-farol-surface-raised);
   font-size: 12px;
 }
 
@@ -482,11 +193,11 @@
 }
 
 .item-tarefa input[type="checkbox"] {
-  accent-color: #315cf5;
+  accent-color: var(--color-farol-primary);
 }
 
 .tarefa-concluida {
-  color: #9aa8c0;
+  color: var(--color-farol-text-subtle);
   text-decoration: line-through;
 }
 
@@ -494,7 +205,7 @@
   flex-shrink: 0;
   border: none;
   background: transparent;
-  color: #ff8c8c;
+  color: var(--color-farol-danger-soft);
   font-size: 20px;
   cursor: pointer;
 }
@@ -503,13 +214,13 @@
     width: 100%;
     height: 10px;
     margin-top: 12px;
-    background-color: #e5e7eb;
+    background-color: var(--color-farol-border-light);
     border-radius: 10px;
     overflow: hidden;
 }
 .barra-progresso-preenchida {
     height: 100%;
-    background-color: #1836c0;
+    background-color: var(--color-farol-primary-deep);
     border-radius: 10px;
     transition: width 0.3s ease;
 }
@@ -517,22 +228,8 @@
 
 .ilha-concluida {
     opacity: 0.7;
-    border: 1px solid #1836c0;
+    border: 1px solid var(--color-farol-primary-deep);
 }
-
-.concluir-objetivo {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 10px;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.concluir-objetivo input {
-    cursor: pointer;
-}
-    
 
 .dias {
     display: grid;
@@ -552,10 +249,10 @@
     width: 100%;
     min-width: 0;
     padding: 10px 0;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-farol-border-light);
     border-radius: 12px;
     background-color: white;
-    color: #101c34;
+    color: var(--color-farol-calendar-text);
     cursor: pointer;
     box-sizing: border-box;
 }
@@ -567,31 +264,16 @@
 }
 
 .dia strong {
-    font-size: 16px;
-}
-
-.dia:hover {
-    border-color: #1836c0;
-}
-
-.dia-selecionado {
-    background-color: #1836c0;
-    border-color: #1836c0;
-    color: white;
-}
-
-
-.dia strong {
     font-size: 18px;
 }
 
 .dia:hover {
-    border-color: #1836c0;
+    border-color: var(--color-farol-primary-deep);
 }
 
 .dia-selecionado {
-    background-color: #1836c0;
-    border-color: #1836c0;
+    background-color: var(--color-farol-primary-deep);
+    border-color: var(--color-farol-primary-deep);
     color: white;
 }
 
@@ -599,48 +281,15 @@
     display: block;
     width: 6px;
     height: 6px;
-    background-color: #1836c0;
+    background-color: var(--color-farol-primary-deep);
     border-radius: 50%;
     margin-top: 4px;
 }
 
-.remover-nota {
-    cursor: pointer;
-    color: #dc2626;
-    background: transparent;
-    border: none;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 6px;
-    flex-shrink: 0;
-}
-
-.remover-nota:hover {
-    background-color: #fee2e2;
-    color: #b91c1c;
-}
-
-/* O cursor padrão não deve ser de clique no card inteiro */
-.nota {
-    cursor: default;
-}
-
-.nota label {
-    cursor: pointer;
-}
-.ilha-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    flex: 1;
-    min-width: 0;
-}
-
+.remover-nota,
 .remover-objetivo {
     cursor: pointer;
-    color: #dc2626;
+    color: var(--color-farol-danger);
     background: transparent;
     border: none;
     font-size: 22px;
@@ -650,7 +299,13 @@
     flex-shrink: 0;
 }
 
+.remover-nota:hover,
 .remover-objetivo:hover {
-    background-color: #fee2e2;
-    color: #b91c1c;
+    background-color: var(--color-farol-danger-surface);
+    color: var(--color-farol-danger-hover);
+}
+
+/* Apenas a caixa de seleção da nota indica interação. */
+.nota label {
+    cursor: pointer;
 }
