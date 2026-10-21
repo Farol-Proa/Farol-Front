@@ -1,40 +1,29 @@
-import Header from "./components/Header";
-import MapaIlha from "./pages/MapaIlha";
-import { useState } from "react";
-import Painel from "./pages/Painel";
-import heroFarol from "./assets/hero_farol.png";
+import Header from './components/Header';
+import MapaIlha from './pages/MapaIlha';
+import { useState } from 'react';
+import Painel from './pages/Painel';
+import heroFarol from './assets/hero_farol.png';
 
 function App() {
-
   const [mostrarPainel, setMostrarPainel] = useState(false);
   const [ilhaSelecionada, setIlhaSelecionada] = useState(null);
 
   if (ilhaSelecionada) {
-    return (
-      <MapaIlha
-        ilha={ilhaSelecionada}
-        onVoltar={() => setIlhaSelecionada(null)}
-      />
-    );
+    return <MapaIlha ilha={ilhaSelecionada} onVoltar={() => setIlhaSelecionada(null)} />;
   }
 
   if (mostrarPainel) {
-    return (
-      <Painel
-        onAbrirIlha={(ilha) => setIlhaSelecionada(ilha)}
-      />
-    );
+    return <Painel onAbrirIlha={(ilha) => setIlhaSelecionada(ilha)} />;
   }
 
   return (
     <div className="min-h-screen bg-farol-background text-farol-text">
-
       <Header onEntrar={() => setMostrarPainel(true)} />
 
       <main
         id="farol"
         className="hero relative isolate flex min-h-svh w-full items-center px-[6.2%] pt-32.5 pb-17.5"
-        style={{ "--hero-imagem": `url("${heroFarol}")` }}
+        style={{ '--hero-imagem': `url("${heroFarol}")` }}
       >
         <section className="relative z-1 w-full max-w-152.5 min-w-0">
           <span className="text-[11px] font-bold tracking-[1.4px] text-farol-accent">
@@ -51,8 +40,8 @@ function App() {
           </h1>
 
           <p className="hero-description mb-6.5 max-w-120 text-base leading-[1.8] text-farol-muted">
-            Anote ideias, organize o dia e trace rotas para seus objetivos.
-            O Farol ilumina o caminho. Você conduz a jornada.
+            Anote ideias, organize o dia e trace rotas para seus objetivos. O Farol ilumina o
+            caminho. Você conduz a jornada.
           </p>
 
           <div className="hero-actions flex flex-wrap gap-3.5">
@@ -71,18 +60,19 @@ function App() {
         </section>
       </main>
 
-
-      <section id="recursos" className="resources-section relative bg-farol-background px-[6.2%] pt-18 pb-16 text-farol-text">
+      <section
+        id="recursos"
+        className="resources-section relative bg-farol-background px-[6.2%] pt-18 pb-16 text-farol-text"
+      >
         <div className="mb-8 grid grid-cols-[1.2fr_1fr] items-center gap-10">
           <h2 className="m-0 text-[clamp(22px,2.2vw,32px)] leading-[1.2]">
             Não é sobre fazer mais.
-            <br />
-            É sobre saber para onde ir.
+            <br />É sobre saber para onde ir.
           </h2>
 
           <p className="m-0 text-sm leading-[1.8] text-farol-muted">
-            Entre uma ideia, uma tarefa e um sonho, existe um caminho.
-            O Farol ajuda você a dar sentido a cada passo.
+            Entre uma ideia, uma tarefa e um sonho, existe um caminho. O Farol ajuda você a dar
+            sentido a cada passo.
           </p>
         </div>
 
@@ -91,8 +81,7 @@ function App() {
             <span className="mb-3.5 block text-[25px] text-farol-primary-hover">✎</span>
             <h3 className="mb-3 text-base font-semibold">Ideias em um porto seguro</h3>
             <p className="m-0 text-sm leading-[1.8] text-farol-muted">
-              Guarde pensamentos, lembretes e descobertas
-              antes que se percam no dia.
+              Guarde pensamentos, lembretes e descobertas antes que se percam no dia.
             </p>
           </article>
 
@@ -100,8 +89,7 @@ function App() {
             <span className="mb-3.5 block text-[25px] text-farol-primary-hover">☷</span>
             <h3 className="mb-3 text-base font-semibold">Objetivos com um caminho</h3>
             <p className="m-0 text-sm leading-[1.8] text-farol-muted">
-              Transforme planos distantes em etapas que você
-              consegue enxergar e percorrer.
+              Transforme planos distantes em etapas que você consegue enxergar e percorrer.
             </p>
           </article>
 
@@ -109,15 +97,16 @@ function App() {
             <span className="mb-3.5 block text-[25px] text-farol-primary-hover">▦</span>
             <h3 className="mb-3 text-base font-semibold">Um dia com mais clareza</h3>
             <p className="m-0 text-sm leading-[1.8] text-farol-muted">
-              Reúna tarefas, compromissos e prioridades sem
-              perder a visão do todo.
+              Reúna tarefas, compromissos e prioridades sem perder a visão do todo.
             </p>
           </article>
         </div>
       </section>
 
-
-      <footer id="como-funciona" className="site-footer flex min-h-15.5 flex-wrap items-center justify-between gap-5 border-t border-farol-footer-border px-[6.2%] py-6 text-[11px] text-farol-muted">
+      <footer
+        id="como-funciona"
+        className="site-footer flex min-h-15.5 flex-wrap items-center justify-between gap-5 border-t border-farol-footer-border px-[6.2%] py-6 text-[11px] text-farol-muted"
+      >
         <span className="font-bold tracking-[1px] text-farol-footer-label">
           DA IDEIA AO PRÓXIMO PASSO
         </span>
@@ -127,7 +116,6 @@ function App() {
       </footer>
     </div>
   );
-
 }
 
 export default App;

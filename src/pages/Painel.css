@@ -1,4 +1,3 @@
-
 .dashboard-nav-link {
   padding: 12px 10px;
   border: 0;
@@ -87,7 +86,7 @@
 
 .form-nota input,
 .form-objetivo input,
-.form-tarefa input[type="text"] {
+.form-tarefa input[type='text'] {
   width: 100%;
   min-width: 0;
   padding: 10px;
@@ -147,7 +146,6 @@
   text-decoration: line-through;
 }
 
-
 .form-objetivo input {
   flex: 1;
   min-width: 180px;
@@ -157,15 +155,15 @@
   padding: 9px 12px;
 }
 
-.form-objetivo button[type="button"] {
+.form-objetivo button[type='button'] {
   background: var(--color-farol-surface-muted);
 }
 
-.form-tarefa input[type="text"] {
+.form-tarefa input[type='text'] {
   flex: 1 1 130px;
 }
 
-.form-tarefa input[type="time"],
+.form-tarefa input[type='time'],
 .form-tarefa select {
   min-width: 0;
   padding: 10px 8px;
@@ -203,7 +201,7 @@
   overflow-wrap: anywhere;
 }
 
-.item-tarefa input[type="checkbox"] {
+.item-tarefa input[type='checkbox'] {
   accent-color: var(--color-farol-primary);
 }
 
@@ -222,101 +220,100 @@
 }
 
 .barra-progresso {
-    width: 100%;
-    height: 10px;
-    margin-top: 12px;
-    background-color: var(--color-farol-border-light);
-    border-radius: 10px;
-    overflow: hidden;
+  width: 100%;
+  height: 10px;
+  margin-top: 12px;
+  background-color: var(--color-farol-border-light);
+  border-radius: 10px;
+  overflow: hidden;
 }
 .barra-progresso-preenchida {
-    height: 100%;
-    background-color: var(--color-farol-primary-deep);
-    border-radius: 10px;
-    transition: width 0.3s ease;
+  height: 100%;
+  background-color: var(--color-farol-primary-deep);
+  border-radius: 10px;
+  transition: width 0.3s ease;
 }
 
-
 .ilha-concluida {
-    opacity: 0.7;
-    border: 1px solid var(--color-farol-primary-deep);
+  opacity: 0.7;
+  border: 1px solid var(--color-farol-primary-deep);
 }
 
 .dias {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 6px;
-    margin-top: 16px;
-    width: 100%;
-    box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .dia {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    min-width: 0;
-    padding: 10px 0;
-    border: 1px solid var(--color-farol-border-light);
-    border-radius: 12px;
-    background-color: white;
-    color: var(--color-farol-calendar-text);
-    cursor: pointer;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 0;
+  border: 1px solid var(--color-farol-border-light);
+  border-radius: 12px;
+  background-color: white;
+  color: var(--color-farol-calendar-text);
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .dia span {
-    color: inherit;
-    font-size: 11px;
-    text-align: center;
+  color: inherit;
+  font-size: 11px;
+  text-align: center;
 }
 
 .dia strong {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .dia:hover {
-    border-color: var(--color-farol-primary-deep);
+  border-color: var(--color-farol-primary-deep);
 }
 
 .dia-selecionado {
-    background-color: var(--color-farol-primary-deep);
-    border-color: var(--color-farol-primary-deep);
-    color: white;
+  background-color: var(--color-farol-primary-deep);
+  border-color: var(--color-farol-primary-deep);
+  color: white;
 }
 
 .dia-com-tarefa {
-    display: block;
-    width: 6px;
-    height: 6px;
-    background-color: var(--color-farol-primary-deep);
-    border-radius: 50%;
-    margin-top: 4px;
+  display: block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-farol-primary-deep);
+  border-radius: 50%;
+  margin-top: 4px;
 }
 
 .remover-nota,
 .remover-objetivo {
-    cursor: pointer;
-    color: var(--color-farol-danger);
-    background: transparent;
-    border: none;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 6px;
-    flex-shrink: 0;
+  cursor: pointer;
+  color: var(--color-farol-danger);
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
 }
 
 .remover-nota:hover,
 .remover-objetivo:hover {
-    background-color: var(--color-farol-danger-surface);
-    color: var(--color-farol-danger-hover);
+  background-color: var(--color-farol-danger-surface);
+  color: var(--color-farol-danger-hover);
 }
 
 /* Apenas a caixa de seleção da nota indica interação. */
 .nota label {
-    cursor: pointer;
+  cursor: pointer;
 }

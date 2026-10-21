@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-farol-background: #070e1c;
@@ -60,7 +60,13 @@ textarea {
 .hero {
   background-color: var(--color-farol-background);
   background-image:
-    linear-gradient(90deg, color-mix(in srgb, var(--color-farol-background) 96%, transparent) 0%, color-mix(in srgb, var(--color-farol-background) 82%, transparent) 35%, color-mix(in srgb, var(--color-farol-background) 35%, transparent) 65%, color-mix(in srgb, var(--color-farol-background) 12%, transparent) 100%),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-farol-background) 96%, transparent) 0%,
+      color-mix(in srgb, var(--color-farol-background) 82%, transparent) 35%,
+      color-mix(in srgb, var(--color-farol-background) 35%, transparent) 65%,
+      color-mix(in srgb, var(--color-farol-background) 12%, transparent) 100%
+    ),
     var(--hero-imagem);
   background-position: center;
   background-repeat: no-repeat;
@@ -85,7 +91,10 @@ textarea {
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
-  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
 }
 
 .button-primary {
@@ -115,7 +124,9 @@ textarea {
   border-radius: 18px;
   background: var(--color-farol-surface);
   padding: 1.625rem 1.375rem;
-  transition: transform 180ms ease, border-color 180ms ease;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
 }
 
 .feature-card:hover {
@@ -124,7 +135,10 @@ textarea {
 }
 
 .site-header {
-  transition: background-color 300ms ease, box-shadow 300ms ease, backdrop-filter 300ms ease;
+  transition:
+    background-color 300ms ease,
+    box-shadow 300ms ease,
+    backdrop-filter 300ms ease;
 }
 
 .site-header-scrolled {
@@ -141,7 +155,7 @@ textarea {
 @media (max-width: 760px) {
   .site-header {
     flex-wrap: wrap;
-    gap: .75rem;
+    gap: 0.75rem;
     padding-inline: 5%;
   }
 
@@ -167,17 +181,22 @@ textarea {
   }
 
   .header-actions {
-    gap: .75rem;
+    gap: 0.75rem;
   }
 
   .header-cta {
-    padding-inline: .625rem;
+    padding-inline: 0.625rem;
   }
 
   .hero {
     padding: 10rem 5% 3.75rem;
     background-image:
-      linear-gradient(90deg, color-mix(in srgb, var(--color-farol-background) 94%, transparent) 0%, color-mix(in srgb, var(--color-farol-background) 82%, transparent) 60%, color-mix(in srgb, var(--color-farol-background) 58%, transparent) 100%),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-farol-background) 94%, transparent) 0%,
+        color-mix(in srgb, var(--color-farol-background) 82%, transparent) 60%,
+        color-mix(in srgb, var(--color-farol-background) 58%, transparent) 100%
+      ),
       var(--hero-imagem);
     background-position: 58% center;
   }
@@ -206,7 +225,7 @@ textarea {
 
   .resources-section > div:last-child {
     grid-template-columns: 1fr;
-    gap: .875rem;
+    gap: 0.875rem;
   }
 
   .site-footer {
@@ -222,7 +241,7 @@ textarea {
   }
 
   .header-nav {
-    gap: .75rem;
+    gap: 0.75rem;
   }
 
   .header-nav a {
@@ -230,7 +249,7 @@ textarea {
   }
 
   .header-actions {
-    gap: .5rem;
+    gap: 0.5rem;
   }
 
   .header-cta {
