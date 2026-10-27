@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import Sidebar from "../components/Sidebar";
 import './Painel.css';
 
 function Painel({ onAbrirIlha }) {
@@ -271,44 +272,19 @@ function Painel({ onAbrirIlha }) {
 
   return (
     <div className="min-h-screen bg-farol-dashboard text-farol-text flex max-[600px]:flex-col">
-      <aside className="flex w-[190px] shrink-0 flex-col border-r border-farol-sidebar-border bg-farol-sidebar px-3.5 py-5 max-[950px]:w-[155px] max-[600px]:w-full max-[600px]:p-3">
-        <div className="mb-[35px] flex items-center gap-2.5 max-[600px]:mb-3">
-          <div className="grid size-[38px] place-items-center rounded-full bg-farol-primary text-farol-accent">
-            ✦
-          </div>
-          <h2 className="text-xl">Farol</h2>
-        </div>
+      <Sidebar
+    secaoAtiva="inicio"
+    onNavegar={(secao) => {
+        const elemento = document.getElementById(secao);
 
-        <nav className="dashboard-nav grid gap-2.5">
-          <a className="dashboard-nav-link dashboard-nav-active" href="#inicio">
-            ⌂ Início
-          </a>
-          <a className="dashboard-nav-link" href="#objetivos">
-            ◎ Objetivos
-          </a>
-          <a className="dashboard-nav-link" href="#mapas">
-            ♧ Mapas
-          </a>
-          <a className="dashboard-nav-link" href="#anotacoes">
-            ☷ Anotações
-          </a>
-          <a className="dashboard-nav-link" href="#calendario">
-            ▦ Calendário
-          </a>
-          <a className="dashboard-nav-link" href="#mentoria">
-            ♙ Mentoria
-          </a>
-        </nav>
-
-        <div className="mt-auto grid justify-items-center gap-2.5 rounded-xl bg-farol-dashboard-card px-2.5 py-5 max-[600px]:hidden">
-          <div className="text-[42px] text-farol-accent">⚑</div>
-          <strong>7 dias</strong>
-        </div>
-
-        <button className="dashboard-nav-link mt-3 cursor-pointer text-left max-[600px]:hidden">
-          ⚙ Configuração
-        </button>
-      </aside>
+              if (elemento) {
+                  elemento.scrollIntoView({
+                   behavior: "smooth",
+                    block: "start",
+                  });
+              }
+          }}
+        />
 
       <main className="min-w-0 flex-1 p-[22px] max-[600px]:p-3.5" id="inicio">
         <header className="mb-6 flex items-center justify-between">
